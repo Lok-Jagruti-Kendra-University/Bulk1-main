@@ -50,6 +50,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      
+      # Install Java (SonarCloud needs JDK 17)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
